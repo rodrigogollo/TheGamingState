@@ -2,7 +2,6 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 
 import game from  "./routes/game";
-debugger;
 dotenv.config();
 
 const app: Express = express();
