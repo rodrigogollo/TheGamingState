@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import prisma from "./prisma";
 
 import game from  "./routes/game";
 dotenv.config();
@@ -9,8 +10,10 @@ const port = process.env.PORT || 3000;
 
 app.use("/api/game", game);
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server");
+app.get("/", async (req: Request, res: Response) => {
+  const user = await prisma.users.findFirst();
+  console.log(user);
+  res.send("Express + TypeScript Server" + user?.email);
 });
 
 app.listen(port, () => {
