@@ -8,8 +8,8 @@ Backend
 - Node.js (TypeScript)
 - Express
 - Jest
-- MySQL
-- Prisma???
+- PlanetScape Database (MySQL)
+- Prisma ORM
 - JWT
 
 Frontend
