@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import UserService from '../models/user.service'
+import * as UserService from '../models/user.service'
 
 export const getUsers = async (req: Request, res: Response) => {  
   const users = await UserService.all()
@@ -8,6 +8,7 @@ export const getUsers = async (req: Request, res: Response) => {
 
 export const create = async (req: Request, res: Response) => {
   const { first_name, last_name, email } = req.body;
+  
   if (!first_name && !last_name && !email) {
     res.sendStatus(400);
   }
@@ -23,6 +24,6 @@ export const update = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response) => {
   const { id } = req.params; 
-  const user = await UserService.delete(id); 
+  const user = await UserService.deleteUser(id); 
   res.json(user);
 }
