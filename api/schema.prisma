@@ -7,15 +7,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model products {
-  id    Int    @id @default(autoincrement())
-  name  String @db.VarChar(100)
-  price Int
+model Profile {
+  id Int @id @default(autoincrement())
+  name   String
+  gender String
+  age  Int  
+  userId Int    @unique
+  user User @relation(fields: [userId], references: [id])
 }
 
-model users {
-  id         Int     @id @default(autoincrement())
-  email      String  @db.VarChar(255)
-  first_name String? @db.VarChar(255)
-  last_name  String? @db.VarChar(255)
+model Rating {
+  id     Int    @id @default(autoincrement())
+  title  String
+  userId Int    @unique
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique(map: "email") @db.VarChar(255)
+  username  String  @db.VarChar(255)
+  profile Profile?
 }

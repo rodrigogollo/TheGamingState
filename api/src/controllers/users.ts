@@ -7,12 +7,12 @@ export const getUsers = async (req: Request, res: Response) => {
 }
 
 export const create = async (req: Request, res: Response) => {
-  const { first_name, last_name, email } = req.body;
+  const { username, email } = req.body;
   
-  if (!first_name && !last_name && !email) {
+  if (!username && !email) {
     res.sendStatus(400);
   }
-  const user = await UserService.create(first_name, last_name, email);
+  const user = await UserService.create(username, email);
   res.json(user);
 }
 

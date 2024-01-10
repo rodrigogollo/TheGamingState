@@ -3,21 +3,20 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function all() {
-  return await prisma.users.findMany();
+  return await prisma.user.findMany();
 }
 
-export async function create(first_name: string, last_name: string, email: string) {
-  return await prisma.users.create({
+export async function create(username: string, email: string) {
+  return await prisma.user.create({
     data: {
-      first_name: first_name,
-      last_name: last_name,
+      username: username,
       email: email
     }
   });
 }
 
 export async function update(id: string, body: any) {
-  return await prisma.users.update({
+  return await prisma.user.update({
     where: {
       id: Number(id)
     },
@@ -26,7 +25,7 @@ export async function update(id: string, body: any) {
 }
 
 export async function deleteUser(id: string) {
-  return await prisma.users.delete({
+  return await prisma.user.delete({
     where: {
       id: Number(id)
     }
