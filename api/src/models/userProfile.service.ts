@@ -4,9 +4,10 @@ const prisma = new PrismaClient()
 
 export async function getUserProfile(userId: string) {
   return await prisma.profile.findUnique({
-    include: {
+    /*include: {
       User: true
     },
+    */
     where: {
       userId: Number(userId),
     }

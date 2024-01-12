@@ -13,6 +13,9 @@ router.get("/", async (req: Request, res: Response) => {
     headers: {
       Authorization: `Bearer ${token}`,
       "Client-ID": process.env.IGDB_CLIENT_ID
+    },
+    params: {
+      fields: "id, name", 
     }
   });
   console.log(data);
