@@ -4,19 +4,33 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 export const getUserRatings = async (req: Request, res: Response) => {  
   const { userId } = req.params;
-  const rates = await UserRatesService.getUserRates(userId)
-  res.json(rates)
+  try {
+    const rates = await UserRatesService.getUserRates(userId)
+    res.json(rates)
+  } catch (e) {
+    let message;
+    if (e instanceof PrismaClientKnownRequestError) message = e.meta?.cause
+    else String(e)
+    res.send(message).status(500)
+  } 
 }
 
 export const create = async (req: Request, res: Response) => {
   const { userId } = req.params;
   const { title, IGDBgameId } = req.body;
   
-  if (!title && !IGDBgameId) {
+  if (!title || !IGDBgameId) {
     res.sendStatus(400);
   }
-  const rate = await UserRatesService.create(userId, title, IGDBgameId);
-  res.json(rate);
+  try {
+    const rate = await UserRatesService.create(userId, title, IGDBgameId);
+    res.json(rate);
+  } catch (e) {
+    let message;
+    if (e instanceof PrismaClientKnownRequestError) message = e.meta?.cause
+    else String(e)
+    res.send(message).status(500)
+  }
 }
 
 export const update = async (req: Request, res: Response) => {
