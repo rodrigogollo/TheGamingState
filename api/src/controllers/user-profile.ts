@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import * as UserProfileService from '../models/userProfile.service'
+import * as UserProfileService from '../models/user-profile.service'
 
 export const getUserProfile = async (req: Request, res: Response) => {  
   const { userId } = req.params;

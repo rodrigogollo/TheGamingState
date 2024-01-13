@@ -7,9 +7,9 @@ export async function getUserRates(userId: string) {
    where: {
       userId: Number(userId)
     },
-    include: {
-      User: true
-    }
+    // include: {
+    //   User: true
+    // }
   });
 }
 
