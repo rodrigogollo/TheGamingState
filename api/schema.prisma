@@ -5,6 +5,7 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Profile {
@@ -13,17 +14,21 @@ model Profile {
   gender String
   age    Int
   userId Int    @unique
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model Rating {
-  id     Int    @id @default(autoincrement())
-  title  String
-  userId Int    @unique
-  IGDBgameId Int @unique
+  id         Int    @id @default(autoincrement())
+  title      String
+  IGDBgameId Int    @unique
+  userId     Int    @unique
+  author     User   @relation(fields: [userId], references: [id])
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique(map: "email") @db.VarChar(255)
-  username String @db.VarChar(255)
+  id       Int      @id @default(autoincrement())
+  email    String   @unique(map: "email") @db.VarChar(255)
+  username String   @db.VarChar(255)
+  profile  Profile?
+  ratings  Rating[]
 }
