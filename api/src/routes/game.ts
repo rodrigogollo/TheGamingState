@@ -18,8 +18,31 @@ router.get("/", async (req: Request, res: Response) => {
       fields: "id, name", 
     }
   });
-  console.log(data);
+
   res.send(data)
+});
+
+router.get("/:gameId", async (req: Request, res: Response) => {
+  try {
+    const { gameId } = req.params;
+
+    const url = "https://api.igdb.com/v4/games";
+    const token = await validateToken()
+
+    const { data } = await axios.post(url, 
+      `fields id, name; where id = ${gameId};`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Client-ID": process.env.IGDB_CLIENT_ID
+        },
+    });
+
+    res.send(data)
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
 });
 
 async function validateToken() {
