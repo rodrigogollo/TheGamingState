@@ -3,7 +3,12 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function all() {
-  return await prisma.user.findMany();
+  return await prisma.user.findMany({
+    include: {
+      profile: true,
+      ratings: true
+    }
+  });
 }
 
 export async function create(username: string, email: string) {
@@ -21,7 +26,7 @@ export async function update(id: string, body: any) {
       id: Number(id)
     },
     data: body,
-  });
+  })
 }
 
 export async function deleteUser(id: string) {

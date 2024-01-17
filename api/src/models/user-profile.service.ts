@@ -4,11 +4,7 @@ const prisma = new PrismaClient()
 
 export async function getUserProfile(userId: string) {
   return await prisma.profile.findUnique({
-    /*include: {
-      User: true
-    },
-    */
-    where: {
+   where: {
       userId: Number(userId),
     }
   });
