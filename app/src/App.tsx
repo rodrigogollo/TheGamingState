@@ -1,5 +1,6 @@
 import './App.css'
 import { useEffect, useState } from 'react'
+import GamePage from './GamePage';
 function App() {
 
   const [users, setUsers] = useState<[] | null>([]);
@@ -26,6 +27,7 @@ function App() {
             return <p key={id}>{username}</p>
           })
         }
+        <GamePage IGDBgameId="212089" />
       </div>
     </>
   )
