@@ -21,17 +21,16 @@ export async function getGameById(gameId: string) {
     const url = "https://api.igdb.com/v4/games";
     const token = await validateToken()
 
-    const { data } = await axios.post(url, 
-      `fields id, name; where id = ${gameId};`,
+    const gameData = await axios.post(url, 
+      `fields id, name, summary, release_dates.*, cover.*, platforms.*, involved_companies.*; where id = ${gameId};`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
           "Client-ID": process.env.IGDB_CLIENT_ID
-          
         },
     });
 
-    return data;
+    return gameData.data;
 }
 
 async function validateToken() {
