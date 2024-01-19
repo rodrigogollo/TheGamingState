@@ -9,6 +9,7 @@ const GamePage = ({ IGDBgameId }: Props) => {
   const [game, setGame] = useState<Game | null>(null);
 
   useEffect(() => {
+    setGame(null);
     async function getGame(){
       const url = `http://localhost:3000/api/v1/game/${IGDBgameId}`
       const response = await fetch(url);
@@ -22,9 +23,12 @@ const GamePage = ({ IGDBgameId }: Props) => {
   return (
     <div>
       { 
-        game && <h1>{game.name}</h1> 
+        game && 
+        <div>
+          <h1>{game.name}</h1> 
+          <p>{game.summary}</p>
+        </div>
       }
-      <p>game description</p>
     </div>
   )
 }

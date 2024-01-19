@@ -1,4 +1,9 @@
 export interface Game {
-	id: string;
+	id: number;
 	name: string;
+	summary: string;
+	cover: {
+		id: number;
+		url: string;
+	}
 } 
