@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Game } from "./interfaces/game.interface";
+import { Game } from "../interfaces/game.interface";
 
 type Props = {
   IGDBgameId: string;
@@ -14,7 +14,7 @@ const GamePage = ({ IGDBgameId }: Props) => {
       const url = `http://localhost:3000/api/v1/game/${IGDBgameId}`
       const response = await fetch(url);
       const data:Game[] = await response.json();
-      console.log("game res", data);
+
       setGame(data[0]);
     }
     getGame();
@@ -32,4 +32,5 @@ const GamePage = ({ IGDBgameId }: Props) => {
     </div>
   )
 }
+
 export default GamePage;
