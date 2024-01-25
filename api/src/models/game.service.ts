@@ -22,7 +22,7 @@ export async function getGames() {
         "Client-ID": process.env.IGDB_CLIENT_ID
       },
       params: {
-        fields: "id, name", 
+        fields: "id, name, summary, release_dates.*, cover.*, platforms.*, involved_companies.*; limit 20; sort rating desc;", 
       }
     });
 
@@ -72,6 +72,5 @@ async function generateToken():Promise<IGDBTokenResponse> {
     expiration: expiration
   }
 
-  console.log(response);
   return response;
 }

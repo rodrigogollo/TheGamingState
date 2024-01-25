@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use("/api/v1/game", IGDBgameRoutes);
+app.use("/api/v1/games", IGDBgameRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/profile", userProfileRoutes);
 app.use("/api/v1/ratings", userRatingsRoutes);
