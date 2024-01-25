@@ -1,5 +1,6 @@
 import { Route } from "wouter";
-import GamePage from './pages/GamePage';
+import GamesPage from './pages/GamesPage/GamesPage';
+import GameDetailsPage from './pages/GameDetailsPage/GameDetailsPage';
 import UserPage from './pages/UserPage';
 import HomePage from './pages/HomePage';
 
@@ -12,7 +13,11 @@ function App() {
       <Navbar />
       <Route path="/" component={HomePage} />
       <Route path="/users" component={UserPage} />
-      <Route path="/game/:gameId">{(params) => <GamePage IGDBgameId={params.gameId} />}</Route>
+      <Route path="/games" component={GamesPage} />
+      <Route path="/games/:gameId">{(params) => { 
+        return <GameDetailsPage IGDBgameId={params.gameId} />}
+      }
+      </Route>
     </>
   )
 }

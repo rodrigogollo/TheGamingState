@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Game } from "../interfaces/game.interface";
+import { Game } from "../../interfaces/game.interface";
 
 type Props = {
   IGDBgameId: string;
@@ -11,7 +11,7 @@ const GamePage = ({ IGDBgameId }: Props) => {
   useEffect(() => {
     setGame(null);
     async function getGame(){
-      const url = `http://localhost:3000/api/v1/game/${IGDBgameId}`
+      const url = `http://localhost:3000/api/v1/games/${IGDBgameId}`
       const response = await fetch(url);
       const data:Game[] = await response.json();
 

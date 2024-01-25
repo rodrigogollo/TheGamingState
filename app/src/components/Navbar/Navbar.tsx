@@ -4,7 +4,7 @@ import { Link } from 'wouter';
 const Navbar = () => {
   return (
     <nav>
-      <Link href='/game/212089'>
+      <Link href='/games'>
         <a className='link'>Game</a>
       </Link>
     </nav>

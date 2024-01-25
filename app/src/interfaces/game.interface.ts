@@ -6,4 +6,12 @@ export interface Game {
 		id: number;
 		url: string;
 	}
+	screenshots: [{
+		id: number;
+		game: number;
+		height: number;
+		image_id: string;
+		url:string;
+		width: number;
+	}]
 } 

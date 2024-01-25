@@ -1,0 +1,17 @@
+.GameCard {
+	min-height: 30rem;
+	display: flex;
+	flex-direction: column;
+	max-width: 15rem;
+	word-wrap: normal;
+	margin: 1rem;
+}
+
+img {
+	height: 20rem;
+	width: 15rem;
+}
+
+p {
+	padding: .2rem;
+}

@@ -1,0 +1,14 @@
+nav {
+	width: 100vw;
+	height: 1.5rem;
+	background-color: gray;
+	padding: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+}
