@@ -8,6 +8,7 @@
 	color: white;
 	text-decoration: none;
 	min-width: 20rem;
+	padding: 2rem;
 }
 .GameCard:hover {
 	border: 1px solid white;

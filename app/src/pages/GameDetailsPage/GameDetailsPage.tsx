@@ -1,32 +1,29 @@
-import { useEffect, useState } from "react";
 import { Game } from "../../interfaces/game.interface";
+import { useQuery } from "@tanstack/react-query"
 
 type Props = {
   IGDBgameId: string;
 }
 
 const GamePage = ({ IGDBgameId }: Props) => {
-  const [game, setGame] = useState<Game | null>(null);
 
-  useEffect(() => {
-    setGame(null);
-    async function getGame(){
-      const url = `http://localhost:3000/api/v1/games/${IGDBgameId}`
-      const response = await fetch(url);
-      const data:Game[] = await response.json();
+  const { isPending, error, data } = useQuery({
+    queryKey: [`game_${IGDBgameId}`],
+    queryFn: () =>
+     fetch(`http://localhost:3000/api/v1/games/${IGDBgameId}`)
+      .then((res) => res.json())
+      .then((data: Game[]) => data[0]),
+  })
 
-      setGame(data[0]);
-    }
-    getGame();
-  }, [])
+  if (isPending) return <h1>Loading...</h1>
+  if (error) return "An error occured: " + error.message;
 
   return (
     <div>
       { 
-        game && 
         <div>
-          <h1>{game.name}</h1> 
-          <p>{game.summary}</p>
+          <h1>{data.name}</h1> 
+          <p>{data.summary}</p>
         </div>
       }
     </div>
