@@ -3,12 +3,16 @@
   padding: 0;
   min-width: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 html {
   font-size: 62.5%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
   font-size: 1.6rem;
+  background-color: #121212;
+  color: white;
 }

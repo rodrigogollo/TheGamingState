@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { Game } from "../../interfaces/game.interface";
 import GameCard from "../../components/GameCard/GameCard";
+
 import "./GamesPage.css";
 
 const GamesPage = () => {
@@ -20,7 +21,7 @@ const GamesPage = () => {
     }, [])
 
   return (
-    <div>
+    <div className="GamesPage">
       { 
         games && 
         games.map((game) => (

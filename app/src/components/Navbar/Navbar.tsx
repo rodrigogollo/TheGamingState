@@ -5,8 +5,16 @@ const Navbar = () => {
   return (
     <nav>
       <Link href='/games'>
-        <a className='link'>Game</a>
+        <a className='link'>Games</a>
       </Link>
+      <div className='menu'>
+        <Link href='/login'>
+          <a className='link'>Login</a>
+        </Link>
+        <Link href='/signup'>
+          <a className='link'>Sign Up</a>
+        </Link>
+      </div>
     </nav>
   )
 }

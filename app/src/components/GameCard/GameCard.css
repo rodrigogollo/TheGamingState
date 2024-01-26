@@ -5,11 +5,20 @@
 	max-width: 15rem;
 	word-wrap: normal;
 	margin: 1rem;
+	color: white;
+	text-decoration: none;
+	min-width: 20rem;
+}
+.GameCard:hover {
+	border: 1px solid white;
+	border-radius: 1rem;
 }
 
 img {
 	height: 20rem;
 	width: 15rem;
+	margin: auto;
+	border-radius: 1rem;
 }
 
 p {
