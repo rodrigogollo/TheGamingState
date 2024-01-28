@@ -1,33 +1,16 @@
-import { Game } from "../../interfaces/game.interface";
-import { useQuery } from "@tanstack/react-query"
+import GameDetails from '../../components/GameDetails/GameDetails'
 
 type Props = {
   IGDBgameId: string;
 }
 
-const GamePage = ({ IGDBgameId }: Props) => {
-
-  const { isPending, error, data } = useQuery({
-    queryKey: [`game_${IGDBgameId}`],
-    queryFn: () =>
-     fetch(`http://localhost:3000/api/v1/games/${IGDBgameId}`)
-      .then((res) => res.json())
-      .then((data: Game[]) => data[0]),
-  })
-
-  if (isPending) return <h1>Loading...</h1>
-  if (error) return "An error occured: " + error.message;
-
-  return (
-    <div>
-      { 
-        <div>
-          <h1>{data.name}</h1> 
-          <p>{data.summary}</p>
-        </div>
-      }
-    </div>
+const GameDetailsPage = ({ IGDBgameId }: Props) => {
+ return (
+    <>
+      <GameDetails IGDBgameId={IGDBgameId} />
+      <h1>Rating 80/100</h1>
+    </>
   )
 }
 
-export default GamePage;
+export default GameDetailsPage;
