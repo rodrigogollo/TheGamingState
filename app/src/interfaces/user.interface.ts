@@ -1,11 +1,11 @@
-import { Profile } from './profile.interface'
-import { Rating } from './rating.interface'
+import { IProfile } from './profile.interface'
+import { IRating } from './rating.interface'
 
-export interface User {	
+export interface IUser {	
 	id: number;
 	email: string;
 	username: string;
-	profile: Profile;
-	ratings: Rating[]
+	profile: IProfile;
+	ratings: IRating[]
 }
 

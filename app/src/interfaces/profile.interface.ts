@@ -1,11 +1,11 @@
-import { User } from './user.interface'
+import { IUser } from './user.interface'
 
-export interface Profile { 
+export interface IProfile { 
 	id: number;
 	name: string;
 	gender: string;
 	age: number;
 	userId: number;
-	user: User;
+	user: IUser;
 }
 

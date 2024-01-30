@@ -1,9 +1,9 @@
-import { User } from './user.interface'
+import { IUser } from './user.interface'
 
-export interface Rating { 
+export interface IRating { 
 	id: number;
 	title: string;
 	IGDBgameId: number;
 	userId: number;
-	author: User;
+	author: IUser;
 }

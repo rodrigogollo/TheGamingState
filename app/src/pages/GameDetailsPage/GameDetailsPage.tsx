@@ -1,4 +1,5 @@
 import GameDetails from '../../components/GameDetails/GameDetails'
+import Rating from '../../components/Rating/Rating'
 
 type Props = {
   IGDBgameId: string;
@@ -8,9 +9,9 @@ const GameDetailsPage = ({ IGDBgameId }: Props) => {
  return (
     <>
       <GameDetails IGDBgameId={IGDBgameId} />
-      <h1>Rating 80/100</h1>
+      <Rating IGDBgameId={IGDBgameId} />
     </>
   )
 }
 
-export default GameDetailsPage;
+export default GameDetailsPage
