@@ -2,12 +2,24 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function getUserRates(userId: string) {
+export async function getAllRatings() {
+  return await prisma.rating.findMany({})
+}
+
+export async function getRatingsByUserId(userId: string) {
   return await prisma.rating.findMany({
    where: {
       userId: Number(userId)
     },
   });
+}
+
+export async function getRatingsByIGDBgameId(IGDBgameId: string){
+  return await prisma.rating.findMany({
+    where: {
+      IGDBgameId: Number(IGDBgameId)
+    }
+  })
 }
 
 export async function create(userId: string, title: string, IGDBgameId: string) {

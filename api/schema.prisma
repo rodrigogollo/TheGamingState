@@ -20,9 +20,10 @@ model Profile {
 model Rating {
   id         Int    @id @default(autoincrement())
   title      String
-  IGDBgameId Int    @unique
-  userId     Int    @unique
+  IGDBgameId Int
+  userId     Int
   author     User   @relation(fields: [userId], references: [id])
+  @@unique([IGDBgameId, userId], name: "UNIQUE_GAME_USER")
 }
 
 model User {

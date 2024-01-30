@@ -6,7 +6,7 @@ import cors from "cors"
 import IGDBgameRoutes from  "./routes/game";
 import userRoutes from './routes/user';
 import userProfileRoutes from './routes/user-profile';
-import userRatingsRoutes from './routes/user-ratings';
+import ratingsRoutes from './routes/ratings';
 
 dotenv.config();
 
@@ -19,7 +19,7 @@ app.use(cors());
 app.use("/api/v1/games", IGDBgameRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/profile", userProfileRoutes);
-app.use("/api/v1/ratings", userRatingsRoutes);
+app.use("/api/v1/ratings", ratingsRoutes);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
